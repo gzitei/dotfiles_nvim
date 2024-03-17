@@ -4,4 +4,4 @@ require("setup")
 --vim.g.netrw_dir = '/mnt/AdditionalDisk/coding/projects/'
 --vim.g.netrw_liststyle = 3
 --vim.g.netrw_browse_x = 'subl'
-
+--vim.g.netrw_browsex_viewer = "subl"
