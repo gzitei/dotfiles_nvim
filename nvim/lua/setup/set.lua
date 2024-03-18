@@ -18,12 +18,12 @@ vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 vim.opt.colorcolumn = "80"
-vim.api.nvim_set_option('guicursor', 'n-v-c-sm:block,i-ci-ve:block-blinkoff150-blinkon150,r-cr-o:hor21')
 vim.g.mapleader = " "
 vim.cmd('set nrformats+=alpha')
---vim.cmd('source $HOME/.config/nvim/lua/setup/packer.lua')
---vim.cmd('cd /mnt/AdditionalDisk/coding/projects/')
---vim.g.netrw_dir = '/mnt/AdditionalDisk/coding/projects/'
+vim.api.nvim_set_option('guicursor', 'n-v-c-sm:block,i-ci-ve:block-blinkoff150-blinkon150,r-cr-o:hor21')
 vim.g.netrw_liststyle = 3
 --vim.g.netrw_browse_x = 'subl'
 --vim.g.netrw_browsex_viewer = "subl"
+--vim.cmd('source ~/.config/nvim/lua/setup/packer.lua')
+--vim.cmd('cd /mnt/AdditionalDisk/coding/projects/')
+--vim.g.netrw_dir = '/mnt/AdditionalDisk/coding/projects/'
