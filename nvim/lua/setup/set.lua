@@ -18,11 +18,7 @@ vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 vim.opt.colorcolumn = "80"
-vim.opt.guicursor = {
-  'n-v-c:block-Cursor/lCursor-blinkwait1000-blinkon100-blinkoff100',
-  'i-ci:block-Cursor/lCursor-blinkwait1000-blinkon100-blinkoff100',
-  'r:hor50-Cursor/lCursor-blinkwait100-blinkon100-blinkoff100'
-}
+vim.api.nvim_set_option('guicursor', 'n-v-c-sm:block,i-ci-ve:block-blinkoff150-blinkon150,r-cr-o:hor21')
 vim.g.mapleader = " "
 vim.cmd('set nrformats+=alpha')
 --vim.cmd('source $HOME/.config/nvim/lua/setup/packer.lua')
