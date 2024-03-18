@@ -24,3 +24,4 @@ vim.opt.guicursor = {
   'r:hor50-Cursor/lCursor-blinkwait100-blinkon100-blinkoff100'
 }
 vim.g.mapleader = " "
+vim.cmd('set nrformats+=alpha')
