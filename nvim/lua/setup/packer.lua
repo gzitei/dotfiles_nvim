@@ -7,13 +7,11 @@ return require('packer').startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
     use {
-        'nvim-telescope/telescope.nvim', tag = '0.1.5',
+        'nvim-telescope/telescope.nvim',
         -- or                            , branch = '0.1.x',
         requires = { {'nvim-lua/plenary.nvim'} }
     }
-    use({ 'rose-pine/neovim', as = 'rose-pine', config = function()
-        vim.cmd('colorscheme rose-pine')
-    end})
+    use({ 'rose-pine/neovim', as = 'rose-pine'})
 
     use ('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
     use ('nvim-treesitter/playground')
@@ -21,6 +19,8 @@ return require('packer').startup(function(use)
     use ('mbbill/undotree')
     use ('tpope/vim-fugitive')
     use ('lukas-reineke/indent-blankline.nvim')
+    use ({'folke/tokyonight.nvim', as = 'tokyonight'})
+    use('folke/trouble.nvim')
     use {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v3.x',
@@ -53,4 +53,15 @@ return require('packer').startup(function(use)
             require'alpha'.setup(require'alpha.themes.startify'.config)
         end
     }
+    use {
+        "windwp/nvim-autopairs",
+        event = "InsertEnter",
+        config = function()
+            require("nvim-autopairs").setup {}
+        end
+    }
+    use {
+        "lewis6991/gitsigns.nvim"
+    }
+
 end)

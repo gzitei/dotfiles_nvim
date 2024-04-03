@@ -1,6 +1,14 @@
 local lsp = require("lsp-zero")
 lsp.preset("recommended")
-
+lsp.set_preferences({
+    suggest_lsp_servers = false,
+    sign_icons = {
+        error = 'E',
+        warn = 'W',
+        hint = 'H',
+        info = 'I'
+    }
+})
 
 lsp.on_attach(function(client, bufnr)
     local opts = {buffer = bufnr, remap = false}
@@ -39,6 +47,12 @@ lsp_config.setup({
 
 
 local cmp = require('cmp')
+
+cmp.setup({
+    sources = {
+        {name = 'nvim_lsp'},
+    }
+})
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
 
 
@@ -107,3 +121,6 @@ require('lspconfig').lua_ls.setup {
     }
 }
 
+vim.diagnostic.config({
+    virtual_text = true
+})
