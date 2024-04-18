@@ -12,6 +12,9 @@ return require('packer').startup(function(use)
         requires = { {'nvim-lua/plenary.nvim'} }
     }
     use({ 'rose-pine/neovim', as = 'rose-pine'})
+    use({
+        "stevearc/conform.nvim"
+    })
 
     use ('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
     use ('nvim-treesitter/playground')
@@ -62,6 +65,17 @@ return require('packer').startup(function(use)
     }
     use {
         "lewis6991/gitsigns.nvim"
+    }
+    use {"akinsho/toggleterm.nvim", tag = '*', config = function()
+        require("toggleterm").setup()
+    end}
+    use {
+        'jose-elias-alvarez/nvim-lsp-ts-utils',
+        config = function()
+            require'nvim-lsp-ts-utils'.setup {
+                enable_inlay_hints = true,
+            }
+        end
     }
 
 end)

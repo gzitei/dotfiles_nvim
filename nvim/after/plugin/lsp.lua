@@ -32,6 +32,7 @@ lsp_config.setup({
     -- with the ones you want to install
 
     ensure_installed = {
+        'gopls',
         'tsserver',
         'eslint',
         "lua_ls",
