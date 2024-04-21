@@ -21,7 +21,7 @@ return require('packer').startup(function(use)
     use ('theprimeagen/harpoon')
     use ('mbbill/undotree')
     use ('tpope/vim-fugitive')
-    use ('lukas-reineke/indent-blankline.nvim')
+    use {'lukas-reineke/indent-blankline.nvim', tag="v2.20.8"}
     use ({'folke/tokyonight.nvim', as = 'tokyonight'})
     use('folke/trouble.nvim')
     use {
@@ -66,9 +66,6 @@ return require('packer').startup(function(use)
     use {
         "lewis6991/gitsigns.nvim"
     }
-    use {"akinsho/toggleterm.nvim", tag = '*', config = function()
-        require("toggleterm").setup()
-    end}
     use {
         'jose-elias-alvarez/nvim-lsp-ts-utils',
         config = function()
@@ -77,5 +74,9 @@ return require('packer').startup(function(use)
             }
         end
     }
-
-end)
+    use { "ellisonleao/gruvbox.nvim" }
+    use {  "echasnovski/mini.indentscope"}
+    use {
+        "loctvl842/monokai-pro.nvim",
+    }
+    end)
