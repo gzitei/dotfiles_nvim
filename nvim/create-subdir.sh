@@ -15,16 +15,18 @@ done
 
 if ! [ -d "$folder" ]; then
     mkdir -p "$folder"
+    echo ">> Folder created"
 fi
 
 cd "$folder"
+echo ">> Current directory: $(pwd)"
 echo "$pwd"
 
 : << 'COMMENT'
 
 # adicionar esta função ao arquiv ~/.bashrc
 name() {
-    source ~/.config/nvim/advent-of-code.sh /path/to/your/folder subfolder1 subfolder2 ... subfoldern
+    source ~/.config/nvim/create-subdir.sh /path/to/your/folder/ subfolder1 subfolder2 ... subfolderN
     nvim .
 }
 
