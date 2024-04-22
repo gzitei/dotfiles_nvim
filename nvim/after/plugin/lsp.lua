@@ -1,7 +1,16 @@
 local lsp = require("lsp-zero")
+
+vim.api.nvim_create_autocmd('LspAttach', {
+    desc = 'LSP actions',
+    callback = function(event)
+        vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', {buffer = event.buf})
+        -- More keybindings and commands....
+    end
+})
+
 lsp.preset("recommended")
 lsp.set_preferences({
-    suggest_lsp_servers = false,
+    suggest_lsp_servers = true,
     sign_icons = {
         error = '✘',
         warn = '▲',
@@ -62,7 +71,7 @@ cmp.setup({
         {name = 'nvim_lsp'},
     },
     window = {
-      border = "rounded",
+        border = "rounded",
     },
     completion = {
         border = "rounded",

@@ -1,24 +1,23 @@
 #!/bin/bash
-# Recebe dois argumentos da linha de comando
-args=("$@")
-
-# Define um caminho base para um diretório
 folder="/mnt/AdditionalDisk/coding/just_studying/advent-of-code/"
-
-# Para cada argumento recebido, adiciona-o ao caminho base como um subdiretório
-for arg in "${args[@]}"
+array=("year" "day" "part")
+for s in "${array[@]}";
 do
-    if ! [ "$arg" == "" ]; then
-        folder+="$arg/"
-        # Verifica se o diretório resultante existe. Se não existir, cria o diretório.
-        if [ ! -d "$folder" ]; then
-            mkdir -p "$folder"
-        fi
+    echo ">> Which $s?"
+    read value
+    if ! [ -z "$value" ]; then
+        folder+="$s-$value/"
+    else
+        break
     fi
 done
 
-# Muda para o diretório resultante
-echo "$folder"
+if ! [ -d "$folder" ]; then
+    mkdir -p "$folder"
+fi
+
+cd "$folder"
+echo "$pwd"
 
 : << 'COMMENT'
 

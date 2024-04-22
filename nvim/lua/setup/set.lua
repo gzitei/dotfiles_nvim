@@ -24,8 +24,8 @@ vim.api.nvim_set_option('guicursor', 'n-v-c-sm:block,i-ci-ve:block-blinkoff150-b
 vim.g.netrw_browse_x = 'subl'
 vim.g.netrw_browsex_viewer = "subl"
 vim.cmd('source ~/.config/nvim/lua/setup/packer.lua')
-vim.cmd('cd /mnt/AdditionalDisk/')
-vim.g.netrw_dir = '/mnt/AdditionalDisk/'
+--  vim.cmd('cd /mnt/AdditionalDisk/')
+--  vim.g.netrw_dir = '/mnt/AdditionalDisk/'
 vim.cmd [[highlight Cursor guifg=#FFFFFF guibg=#FF0000]]
 vim.cmd [[highlight lCursor guifg=#FFFFFF guibg=#FF0000]]
 vim.opt.cursorline = true
