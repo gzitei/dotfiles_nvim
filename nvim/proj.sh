@@ -28,7 +28,7 @@ if [ "$selection" -eq 0 ]; then
     mkdir "$dir_path$name"
     echo ">> Project folder created"
     # Acessa o diretório do novo projeto
-    folder="$dir_path$name"
+    cd "$dir_path$name"
     # Inicializa o repositório Git
     git init
     git config init.defaultBranch main
@@ -40,12 +40,11 @@ else
     # Calcula o índice do diretório escolhido
     ((index=selection-1))
     # Acessa o diretório escolhido
-    folder="${subdirs[$index]}"
+    cd "${subdirs[$index]}"
 fi
 
-echo ">> Current directory: $(pwd)"
 # Retorna o diretório atual para o shell
-cd "$folder"
+echo ">> Current directory: $pwd"
 echo "$pwd"
 
 :<< COMMENT
