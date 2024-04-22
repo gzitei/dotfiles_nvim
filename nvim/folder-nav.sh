@@ -1,10 +1,10 @@
 #!/bin/bash
-
-dir_path="/mnt/AdditionalDisk/coding/projects/"
+args="$@"
+dir_path="$1"
 folder=""
 # Lista os subdiretórios na pasta especificada
-echo ">> Your projects:"
-echo -e "\t0. Create new project"
+echo ">> Your folders:"
+echo -e "\t0. Create new folder"
 i=1
 subdirs=()
 for subdir in "$dir_path"*/; do
@@ -16,26 +16,19 @@ for subdir in "$dir_path"*/; do
 done
 
 # Solicita ao usuário que escolha um projeto
-echo ">> Choose your project number:"
+echo ">> Choose your folder number:"
 read selection
 
 # Verifica se o usuário escolheu criar um novo projeto
 if [ "$selection" -eq 0 ]; then
     # Solicita um nome para o novo projeto
-    echo ">> Name your project:"
+    echo ">> Name your folder:"
     read name
     # Cria um novo diretório para o projeto
     mkdir "$dir_path$name"
-    echo ">> Project folder created"
+    echo ">> Folder created"
     # Acessa o diretório do novo projeto
     cd "$dir_path$name"
-    # Inicializa o repositório Git
-    git init
-    git config init.defaultBranch main
-    git checkout -b dev
-    touch .gitignore
-    git add .
-    git commit -m 'batman'
 else
     # Calcula o índice do diretório escolhido
     ((index=selection-1))
@@ -44,12 +37,12 @@ else
 fi
 
 # Retorna o diretório atual para o shell
-echo ">> Current directory: $pwd"
+echo ">> Current directory: $(pwd)"
 echo "$pwd"
 
 :<< COMMENT
 add this to ~/.bashrc
-coding() {
-    source ~/.config/nvim/proj.sh || exit
+name() {
+    source ~/.config/nvim/folder-nav.sh /path/to/desired/folder/ || exit
 }
 COMMENT

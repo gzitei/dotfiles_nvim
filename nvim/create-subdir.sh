@@ -1,7 +1,8 @@
 #!/bin/bash
-folder="/mnt/AdditionalDisk/coding/just_studying/advent-of-code/"
-array=("year" "day" "part")
-for s in "${array[@]}";
+args="$@"
+folder="$1"
+shift
+for s in "$@";
 do
     echo ">> Which $s?"
     read value
@@ -22,9 +23,8 @@ echo "$pwd"
 : << 'COMMENT'
 
 # adicionar esta função ao arquiv ~/.bashrc
-advent_of_code() {
-    mydir=$(source ~/.config/nvim/advent-of-code.sh "$@")
-    cd "$mydir"
+name() {
+    source ~/.config/nvim/advent-of-code.sh /path/to/your/folder subfolder1 subfolder2 ... subfoldern
     nvim .
 }
 

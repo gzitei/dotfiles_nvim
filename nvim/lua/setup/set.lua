@@ -30,4 +30,3 @@ vim.cmd [[highlight Cursor guifg=#FFFFFF guibg=#FF0000]]
 vim.cmd [[highlight lCursor guifg=#FFFFFF guibg=#FF0000]]
 vim.opt.cursorline = true
 vim.cmd [[highlight CursorLine ctermbg=235 guibg=#353535]]
-
