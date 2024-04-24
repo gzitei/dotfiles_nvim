@@ -13,20 +13,20 @@ move_cursor() {
 echo -e "Let's navigate to ${bold}$basef${normal}"
 echo "You may choose an existing folder or create a new one"
 echo -e "$(tput dim)${italic}Use ${bold}-i${normal}${italic}$(tput dim) flag to hide variable in folder name.${normal}"
-echo -e "$(tput dim)${italic}Leave empty to go to ${bold}$basef.${normal}"
 sub=""
 for s in "$@";
 do
-    echo -e "\n>> Which $s?\n"
+    echo -e "\n>> Which $s?"
+    echo -e "$(tput dim)${italic}Leave empty to go to ${bold}$(basename $folder).${normal}\n"
     move_cursor
     read value flag
     if ! [ -z "$value" ]; then
-        if [ "$flag" == "-i" ]; then
-            sub="$value"
-            folder+="$value/"
-        else
+        if ! [ "$flag" == "-i" ]; then
             sub="$s-$value"
             folder+="$s-$value/"
+        else
+            sub="$value"
+            folder+="$value/"
         fi
 
         if [ -d "$folder" ]; then
