@@ -2,24 +2,51 @@
 args="$@"
 folder="$1"
 shift
+
+italic="\033[3m"
+normal="\033[0m"
+bold="\033[1m"
+basef="$(basename "$folder")"
+move_cursor() {
+    echo -en "\t"
+}
+echo -e "Let's navigate to ${bold}$basef${normal}"
+echo "You may choose an existing folder or create a new one"
+echo -e "$(tput dim)${italic}Use ${bold}-i${normal}${italic}$(tput dim) flag to hide variable in folder name.${normal}"
+echo -e "$(tput dim)${italic}Leave empty to go to ${bold}$basef.${normal}"
+sub=""
 for s in "$@";
 do
-    echo ">> Which $s?"
-    read value
+    echo -e "\n>> Which $s?\n"
+    move_cursor
+    read value flag
     if ! [ -z "$value" ]; then
-        folder+="$s-$value/"
+        if [ "$flag" == "-i" ]; then
+            sub="$value"
+            folder+="$value/"
+        else
+            sub="$s-$value"
+            folder+="$s-$value/"
+        fi
+
+        if [ -d "$folder" ]; then
+            echo -e "\n$(tput dim)${italic}You chose ${bold}$sub${normal}${italic}$(tput dim), the folder exists.${normal}"
+        else
+            echo -e "\n$(tput dim)${italic}You chose ${bold}$sub${normal}${italic}$(tput dim), it will be created.${normal}"
+        fi
     else
         break
     fi
 done
+echo -e "\n${italic}Ok, navigating to ${bold}$folder${italic}${normal}...${normal}"
 
 if ! [ -d "$folder" ]; then
     mkdir -p "$folder"
-    echo ">> Folder created"
+    echo -e "$(tput dim)>> Folder created${normal}"
 fi
 
 cd "$folder"
-echo ">> Current directory: $(pwd)"
+echo -e "$(tput dim)>> Current directory: $(pwd)${normal}"
 echo "$pwd"
 
 : << 'COMMENT'
