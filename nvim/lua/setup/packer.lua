@@ -21,7 +21,6 @@ return require('packer').startup(function(use)
     use ('theprimeagen/harpoon')
     use ('mbbill/undotree')
     use ('tpope/vim-fugitive')
-    use {'lukas-reineke/indent-blankline.nvim', tag="v2.20.8"}
     use ({'folke/tokyonight.nvim', as = 'tokyonight'})
     use('folke/trouble.nvim')
     use {

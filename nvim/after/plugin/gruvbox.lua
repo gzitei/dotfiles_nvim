@@ -4,4 +4,4 @@ require("gruvbox").setup({
 		gray = "#2ea542", -- comments are green and by that I mean GREEN
 	}
 })
-
+ColorMyPencils("gruvbox")
