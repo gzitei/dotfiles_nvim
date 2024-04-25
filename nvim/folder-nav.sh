@@ -57,11 +57,11 @@ echo -e "${italic}Ok, navigating to ${bold}$folder${italic}${normal}...${normal}
 # Retorna o diretório atual para o shell
 echo ""
 echo -e "$(tput dim)>> Current directory: $(pwd)${normal}"
-echo "$pwd"
 
 :<< COMMENT
 add this to ~/.bashrc
 name() {
     source ~/.config/nvim/folder-nav.sh /path/to/desired/folder/ || exit
 }
+run this by typing the funciton name in terminal
 COMMENT

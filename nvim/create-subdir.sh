@@ -47,13 +47,12 @@ fi
 
 cd "$folder"
 echo -e "$(tput dim)>> Current directory: $(pwd)${normal}"
-echo "$pwd"
 
 : << 'COMMENT'
 
 # adicionar esta função ao arquiv ~/.bashrc
 name() {
-    source ~/.config/nvim/create-subdir.sh /path/to/your/folder/ subfolder1 subfolder2 ... subfolderN
+    source /path/to/script/create-subdir.sh /path/to/your/folder/ subfolder1 subfolder2 ... subfolderN
     nvim .
 }
 
