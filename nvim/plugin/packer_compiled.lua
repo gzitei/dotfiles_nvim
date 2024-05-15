@@ -120,6 +120,16 @@ _G.packer_plugins = {
     path = "/home/gustavo/.local/share/nvim/site/pack/packer/start/conform.nvim",
     url = "https://github.com/stevearc/conform.nvim"
   },
+  ["eldritch.nvim"] = {
+    loaded = true,
+    path = "/home/gustavo/.local/share/nvim/site/pack/packer/start/eldritch.nvim",
+    url = "https://github.com/eldritch-theme/eldritch.nvim"
+  },
+  embark = {
+    loaded = true,
+    path = "/home/gustavo/.local/share/nvim/site/pack/packer/start/embark",
+    url = "https://github.com/embark-theme/vim"
+  },
   ["friendly-snippets"] = {
     loaded = true,
     path = "/home/gustavo/.local/share/nvim/site/pack/packer/start/friendly-snippets",
@@ -139,11 +149,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/gustavo/.local/share/nvim/site/pack/packer/start/harpoon",
     url = "https://github.com/theprimeagen/harpoon"
-  },
-  ["indent-blankline.nvim"] = {
-    loaded = true,
-    path = "/home/gustavo/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
-    url = "https://github.com/lukas-reineke/indent-blankline.nvim"
   },
   ["lsp-zero.nvim"] = {
     loaded = true,
@@ -174,6 +179,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/gustavo/.local/share/nvim/site/pack/packer/start/monokai-pro.nvim",
     url = "https://github.com/loctvl842/monokai-pro.nvim"
+  },
+  ["nord.nvim"] = {
+    loaded = true,
+    path = "/home/gustavo/.local/share/nvim/site/pack/packer/start/nord.nvim",
+    url = "https://github.com/shaunsingh/nord.nvim"
   },
   ["nvim-autopairs"] = {
     config = { "\27LJ\2\n@\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\19nvim-autopairs\frequire\0" },
@@ -208,6 +218,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/gustavo/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
     url = "https://github.com/nvim-tree/nvim-web-devicons"
+  },
+  ["oxocarbon.nvim"] = {
+    loaded = true,
+    path = "/home/gustavo/.local/share/nvim/site/pack/packer/start/oxocarbon.nvim",
+    url = "https://github.com/nyoom-engineering/oxocarbon.nvim"
   },
   ["packer.nvim"] = {
     loaded = true,
@@ -253,6 +268,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/gustavo/.local/share/nvim/site/pack/packer/start/vim-fugitive",
     url = "https://github.com/tpope/vim-fugitive"
+  },
+  ["vscode.nvim"] = {
+    loaded = true,
+    path = "/home/gustavo/.local/share/nvim/site/pack/packer/start/vscode.nvim",
+    url = "https://github.com/Mofiqul/vscode.nvim"
   }
 }
 

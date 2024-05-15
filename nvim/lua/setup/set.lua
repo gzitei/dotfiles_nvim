@@ -20,7 +20,7 @@ vim.opt.updatetime = 50
 vim.opt.colorcolumn = "80"
 vim.g.mapleader = " "
 vim.cmd('set nrformats+=alpha')
-vim.api.nvim_set_option('guicursor', 'n-v-c-sm:block,i-ci-ve:block-blinkoff150-blinkon150,r-cr-o:hor21')
+vim.api.nvim_set_option('guicursor', 'n-v-c-sm:block,i-ci-ve:block,r-cr-o:hor21')
 vim.g.netrw_browse_x = 'subl'
 vim.g.netrw_browsex_viewer = "subl"
 vim.cmd('source ~/.config/nvim/lua/setup/packer.lua')
@@ -30,3 +30,4 @@ vim.cmd [[highlight Cursor guifg=#FFFFFF guibg=#FF0000]]
 vim.cmd [[highlight lCursor guifg=#FFFFFF guibg=#FF0000]]
 vim.opt.cursorline = true
 vim.cmd [[highlight CursorLine ctermbg=235 guibg=#353535]]
+vim.cmd [[highlight ColorColumn ctermbg=235 guibg=#353535]]

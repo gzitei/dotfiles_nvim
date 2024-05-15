@@ -34,7 +34,6 @@ vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
-vim.keymap.set("n", "<leader><leader><leader>", "<cmd>:SourceCurrentFile<CR>", { silent = true })
 vim.keymap.set("n", "<leader><leader>", "<cmd>:source %<CR>", { silent = true })
 
 vim.keymap.set("n", "<leader>tmv", "<cmd>ToggleTerm direction='vertical'<CR>")
@@ -50,3 +49,5 @@ vim.api.nvim_create_user_command("SO", function()
     vim.fn.system('source ' .. current_file)
     print("Current file sourced.")
 end, {})
+
+vim.keymap.set("n", "<leader>cd", "<cmd>cd %:p:h<CR>")

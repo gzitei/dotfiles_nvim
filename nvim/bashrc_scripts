@@ -1,0 +1,76 @@
+aocode() {
+    source ~/.config/nvim/create-subdir.sh /mnt/AdditionalDisk/coding/just_studying/advent-of-code/ year day part || return 2
+    follow me
+    nvim -c "Alpha" .
+}
+alias advent-of-code=aocode
+alias aoc=aocode
+
+coding() {
+    source ~/.config/nvim/folder-nav.sh /mnt/AdditionalDisk/coding/projects/ || return 2
+    follow me
+    nvim -c "Alpha" .
+}
+alias proj=coding
+alias project=coding
+
+study() {
+    source ~/.config/nvim/folder-nav.sh /mnt/AdditionalDisk/coding/just_studying/ || return 2
+    follow me
+    nvim -c "Alpha" .
+}
+lc() {
+    source ~/.config/nvim/folder-nav.sh /mnt/AdditionalDisk/coding/just_studying/leet-code/ || return 2
+    follow me
+    nvim -c "Alpha" .
+}
+
+follow() {
+    args="$@"
+    flag="$1"
+    source ~/.config/nvim/follow.sh "$flag" || return 2
+   # if [[ "$flag" == "me" ]]; then
+   # else
+   #     source ~/.config/nvim/follow.sh || return 2
+   # fi
+}
+
+repo() {
+    source ~/.config/nvim/folder-nav.sh ~/workspace/github.com/gzitei/ || return 2
+    follow me
+    nvim -c "Alpha" .
+}
+
+alias yank="cat | xclip -selection clipboard && xclip -selection clipboard -o"
+
+
+alias ls=lsd
+
+
+get_git_status() {
+    branch=$(git symbolic-ref --short HEAD 2>/dev/null)
+    if [[ $? -eq 0 ]]; then
+        if git diff --shortstat | grep "changed" > /dev/null; [ $? -eq 0 ]; then
+        if [[ "$st" == "0" ]]; then
+            status="✗"
+        else
+            status="✓"
+        fi
+    else
+        status=""
+    fi
+    echo -e "$status"
+}
+
+parse_git_branch() {
+    branch=$(git symbolic-ref --short HEAD 2>/dev/null)
+    if [[ $? -eq 0 ]]; then
+        branch=" ($branch)"
+    else
+        branch=""
+    fi
+    echo -e "$branch"
+}
+
+PS1='\[\e[1;34m\]\u\[\e[m\] @ \[\e[1;32m\]\W\[\e[m\]\[\e[37m\]$(branch=$(parse_git_branch); [[ -n "$branch" ]] && echo "$branch \[\e[m\]$(st=$(get_git_status); [[ "$st" == "✗" ]] && echo "\[\e[01m\]\[\e[1;31m\]$st" || echo "\[\e[01m\]\[\e[32m\]$st")" || echo "")\[\e[m\] \$ '
+

@@ -6,6 +6,11 @@ vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
+    use "eldritch-theme/eldritch.nvim"
+    use "Mofiqul/vscode.nvim"
+    use {'nyoom-engineering/oxocarbon.nvim'}
+    use 'shaunsingh/nord.nvim'
+    use { 'embark-theme/vim', as = 'embark' }
     use {
         'nvim-telescope/telescope.nvim',
         -- or                            , branch = '0.1.x',
@@ -78,4 +83,4 @@ return require('packer').startup(function(use)
     use {
         "loctvl842/monokai-pro.nvim",
     }
-    end)
+end)
