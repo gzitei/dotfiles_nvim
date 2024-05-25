@@ -47,30 +47,25 @@ alias yank="cat | xclip -selection clipboard && xclip -selection clipboard -o"
 alias ls=lsd
 
 
+PS1='[\A] \[\e[1;94m\]\u\[\e[m\] ☭  \[\e[1;32m\]\W\[\e[m\] ❯ \[\e[0m\]'
 get_git_status() {
-    branch=$(git symbolic-ref --short HEAD 2>/dev/null)
-    if [[ $? -eq 0 ]]; then
-        if git diff --shortstat | grep "changed" > /dev/null; [ $? -eq 0 ]; then
-        if [[ "$st" == "0" ]]; then
-            status="✗"
+    PS1='[\A] \[\e[1;94m\]\u\[\e[m\] ☭  \[\e[1;32m\]\W\[\e[m\]'
+    st=$(git status 2>/dev/null)
+    if [[ $? -eq 128 ]]; then
+        PS1+=""
+    else
+        branch=$(echo "$st" | head -n 1 | sed 's/^On branch //')
+        PS1+="\[\e[37m\] (⎇  $branch) \[\e[m\]"
+        if echo "$st" | grep -Ei 'changes not staged for commit' > /dev/null; then
+            PS1+="\[\e[1;31m\]"✘"\[\e[m\]"
+        elif echo "$st" | grep -Ei 'changes to be committed' > /dev/null; then
+            PS1+="\[\e[38;5;220m\]"✱"\[\e[m\]"
         else
-            status="✓"
+            PS1+="\[\033[32m\]"✔"\[\e[m\]"
         fi
-    else
-        status=""
     fi
-    echo -e "$status"
+    PS1+=' ❯ \[\e[0m\]'
+    return 0
 }
-
-parse_git_branch() {
-    branch=$(git symbolic-ref --short HEAD 2>/dev/null)
-    if [[ $? -eq 0 ]]; then
-        branch=" ($branch)"
-    else
-        branch=""
-    fi
-    echo -e "$branch"
-}
-
-PS1='\[\e[1;34m\]\u\[\e[m\] @ \[\e[1;32m\]\W\[\e[m\]\[\e[37m\]$(branch=$(parse_git_branch); [[ -n "$branch" ]] && echo "$branch \[\e[m\]$(st=$(get_git_status); [[ "$st" == "✗" ]] && echo "\[\e[01m\]\[\e[1;31m\]$st" || echo "\[\e[01m\]\[\e[32m\]$st")" || echo "")\[\e[m\] \$ '
+PROMPT_COMMAND=get_git_status
 

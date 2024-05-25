@@ -7,6 +7,8 @@ return require('packer').startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
     use "eldritch-theme/eldritch.nvim"
+    use ({ 'projekt0n/github-nvim-theme' })
+
     use "Mofiqul/vscode.nvim"
     use {'nyoom-engineering/oxocarbon.nvim'}
     use 'shaunsingh/nord.nvim'
