@@ -51,3 +51,4 @@ vim.api.nvim_create_user_command("SO", function()
 end, {})
 
 vim.keymap.set("n", "<leader>cd", "<cmd>cd %:p:h<CR>")
+

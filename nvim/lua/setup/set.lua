@@ -19,15 +19,27 @@ vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 vim.opt.colorcolumn = "80"
 vim.g.mapleader = " "
-vim.cmd('set nrformats+=alpha')
-vim.api.nvim_set_option('guicursor', 'n-v-c-sm:block,i-ci-ve:block,r-cr-o:hor21')
-vim.g.netrw_browse_x = 'subl'
+vim.cmd("set nrformats+=alpha")
+vim.api.nvim_set_option_value("guicursor", "n-v-c-sm:block,i-ci-ve:block,r-cr-o:hor21", {})
+vim.g.netrw_browse_x = "subl"
 vim.g.netrw_browsex_viewer = "subl"
-vim.cmd('source ~/.config/nvim/lua/setup/packer.lua')
+vim.cmd("source ~/.config/nvim/lua/setup/packer.lua")
 --  vim.cmd('cd /mnt/AdditionalDisk/')
 --  vim.g.netrw_dir = '/mnt/AdditionalDisk/'
-vim.cmd [[highlight Cursor guifg=#FFFFFF guibg=#FF0000]]
-vim.cmd [[highlight lCursor guifg=#FFFFFF guibg=#FF0000]]
+vim.cmd([[highlight Cursor guifg=#FFFFFF guibg=#FF0000]])
+vim.cmd([[highlight lCursor guifg=#FFFFFF guibg=#FF0000]])
 vim.opt.cursorline = true
-vim.cmd [[highlight CursorLine ctermbg=235 guibg=#353535]]
-vim.cmd [[highlight ColorColumn ctermbg=235 guibg=#353535]]
+vim.cmd([[highlight CursorLine ctermbg=235 guibg=#131313]])
+vim.cmd([[highlight ColorColumn ctermbg=235 guibg=#131313]])
+vim.api.nvim_command("iabbrev ;; /")
+vim.api.nvim_command("iabbrev zz \\")
+vim.api.nvim_command("iabbrev ZZ \\|")
+
+vim.api.nvim_create_autocmd({ "FileType" }, {
+	pattern = { "javascript", "javascriptreact", "typescript", "typescriptreact", "json", "css" },
+	callback = function()
+		vim.opt_local.tabstop = 2
+		vim.opt_local.softtabstop = 2
+		vim.opt_local.shiftwidth = 2
+	end,
+})
