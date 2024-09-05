@@ -36,7 +36,7 @@ vim.api.nvim_command("iabbrev zz \\")
 vim.api.nvim_command("iabbrev ZZ \\|")
 
 vim.api.nvim_create_autocmd({ "FileType" }, {
-	pattern = { "javascript", "javascriptreact", "typescript", "typescriptreact", "json", "css" },
+	pattern = { "javascript", "javascriptreact", "typescript", "typescriptreact", "json", "css", "vue", "html" },
 	callback = function()
 		vim.opt_local.tabstop = 2
 		vim.opt_local.softtabstop = 2
