@@ -118,7 +118,7 @@ return require("packer").startup(function(use)
 		run = "npm --prefix "
 			.. vim.fn.stdpath("data")
 			.. "/site/pack/packer/opt/vscode-js-debug/"
-			.. " install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out",
+			.. " install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out && git stash",
 	})
 	use("mfussenegger/nvim-dap-python")
 	use({
