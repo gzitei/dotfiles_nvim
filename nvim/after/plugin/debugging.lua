@@ -18,7 +18,7 @@ dap.listeners.before.launch.dapui_config = function()
 	dapui.open()
 end
 dap.listeners.before.event_terminated.dapui_config = function()
-	dapui.close()
+	--dapui.close()
 end
 dap.listeners.before.event_exited.dapui_config = function()
 	dapui.close()
@@ -54,6 +54,7 @@ for _, language in ipairs(js_based_languages) do
 			cwd = vim.fn.getcwd(),
 			skipFiles = { "<node_internals>/**/**", "node_modules/**/**" },
 			console = "integratedTerminal",
+			postDebugTask = "Keep UI Open",
 		},
 		{
 			type = "pwa-node",
@@ -61,6 +62,7 @@ for _, language in ipairs(js_based_languages) do
 			name = "Launch file",
 			program = "${file}",
 			cwd = "${workspaceFolder}",
+			postDebugTask = "Keep UI Open",
 		},
 		{
 			type = "pwa-node",
@@ -68,6 +70,7 @@ for _, language in ipairs(js_based_languages) do
 			name = "Attach",
 			processId = require("dap.utils").pick_process,
 			cwd = "${workspaceFolder}",
+			postDebugTask = "Keep UI Open",
 		},
 		{
 			type = "pwa-chrome",
@@ -76,6 +79,25 @@ for _, language in ipairs(js_based_languages) do
 			url = "http://localhost:3000",
 			webRoot = "${workspaceFolder}",
 			userDataDir = "${workspaceFolder}/.vscode/vscode-chrome-debug-userdatadir",
+			postDebugTask = "Keep UI Open",
+		},
+		{
+			type = "pwa-node",
+			request = "launch",
+			name = "Jest Debug",
+			runtimeArgs = { "--experimental-vm-modules" },
+			program = "${workspaceFolder}/node_modules/jest/bin/jest.js",
+			args = { "--runInBand" },
+			console = "integratedTerminal",
+			internalConsoleOptions = "neverOpen",
+			disableOptimisticBPs = true,
+			cwd = "${workspaceFolder}",
+			env = {
+				NODE_ENV = "test",
+			},
+			skipFiles = { "<node_internals>/**", "node_modules/**" },
+			sourceMaps = true,
+			postDebugTask = "Keep UI Open",
 		},
 	}
 end
@@ -89,6 +111,7 @@ dap.configurations.python = {
 		pythonPath = function()
 			return "/usr/bin/python3"
 		end,
+		postDebugTask = "Keep UI Open",
 	},
 }
 
@@ -106,3 +129,15 @@ require("dap.ext.vscode").load_launchjs(nil, {
 	["chrome"] = js_based_languages,
 	["pwa-chrome"] = js_based_languages,
 })
+
+dap.configurations["dap-repl"] = {
+	{
+		type = "pwa-node",
+		request = "launch",
+		name = "Launch DAP REPL",
+		program = "${file}",
+		cwd = "${workspaceFolder}",
+		console = "integratedTerminal",
+		internalConsoleOptions = "neverOpen",
+	},
+}
