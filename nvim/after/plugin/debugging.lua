@@ -6,6 +6,7 @@ require("dap-python").setup("python")
 
 require("mason").setup()
 require("mason-nvim-dap").setup({
+	automatic_installation = true,
 	ensure_installed = { "python", "delve" },
 })
 
@@ -41,6 +42,20 @@ require("dap-vscode-js").setup({
 })
 
 local js_based_languages = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" }
+
+if not dap.adapters["node"] then
+	dap.adapters["node"] = function(cb, config)
+		if config.type == "node" then
+			config.type = "pwa-node"
+		end
+		local nativeAdapter = dap.adapters["pwa-node"]
+		if type(nativeAdapter) == "function" then
+			nativeAdapter(cb, config)
+		else
+			cb(nativeAdapter)
+		end
+	end
+end
 
 for _, language in ipairs(js_based_languages) do
 	dap.configurations[language] = {

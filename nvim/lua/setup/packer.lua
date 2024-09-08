@@ -125,4 +125,5 @@ return require("packer").startup(function(use)
 		"Joakker/lua-json5",
 		run = "./install.sh",
 	})
+	use("pmizio/typescript-tools.nvim")
 end)
