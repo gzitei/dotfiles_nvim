@@ -24,8 +24,6 @@ vim.api.nvim_set_option_value("guicursor", "n-v-c-sm:block,i-ci-ve:block,r-cr-o:
 vim.g.netrw_browse_x = "subl"
 vim.g.netrw_browsex_viewer = "subl"
 vim.cmd("source ~/.config/nvim/lua/setup/packer.lua")
---  vim.cmd('cd /mnt/AdditionalDisk/')
---  vim.g.netrw_dir = '/mnt/AdditionalDisk/'
 vim.cmd([[highlight Cursor guifg=#FFFFFF guibg=#FF0000]])
 vim.cmd([[highlight lCursor guifg=#FFFFFF guibg=#FF0000]])
 vim.opt.cursorline = true
@@ -36,10 +34,21 @@ vim.api.nvim_command("iabbrev zz \\")
 vim.api.nvim_command("iabbrev ZZ \\|")
 
 vim.api.nvim_create_autocmd({ "FileType" }, {
-	pattern = { "javascript", "javascriptreact", "typescript", "typescriptreact", "json", "css", "vue", "html" },
+	pattern = {
+		"javascript",
+		"javascriptreact",
+		"typescript",
+		"typescriptreact",
+		"json",
+		"css",
+		"vue",
+		"html",
+		"prisma",
+	},
 	callback = function()
 		vim.opt_local.tabstop = 2
 		vim.opt_local.softtabstop = 2
 		vim.opt_local.shiftwidth = 2
+		vim.opt_local.expandtab = true
 	end,
 })

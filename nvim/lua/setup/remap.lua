@@ -14,18 +14,18 @@ vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("x", "<leader>p", [["_dP]])
 
 -- next greatest remap ever : asbjornHaland
-vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 
-vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
-vim.api.nvim_set_keymap('n', '<leader>gb', ':lua vim.lsp.buf.back()<CR>', {noremap = true, silent = true})
+vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
+vim.api.nvim_set_keymap("n", "<leader>gb", ":lua vim.lsp.buf.back()<CR>", { noremap = true, silent = true })
 
 -- This is going to get me cancelled
 vim.keymap.set("i", "<C-c>", "<Esc>")
 
 vim.keymap.set("n", "Q", "<nop>")
-vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
+vim.api.nvim_set_keymap("n", "<leader>q", ":bd<CR>", { noremap = true, silent = true })
 
 vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
 vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
@@ -40,15 +40,14 @@ vim.keymap.set("n", "<leader>tmv", "<cmd>ToggleTerm direction='vertical'<CR>")
 vim.keymap.set("n", "<leader>tmh", "<cmd>ToggleTerm direction='horizontal'<CR>")
 vim.keymap.set("n", "<leader>tmf", "<cmd>ToggleTerm direction='float'<CR>")
 vim.api.nvim_create_user_command("Cwd", function()
-    local current = vim.fn.expand('%:p:h')
-    vim.fn.system('echo ' .. current .. ' | xclip -selection clipboard')
-    print(current)
+	local current = vim.fn.expand("%:p:h")
+	vim.fn.system("echo " .. current .. " | xclip -selection clipboard")
+	print(current)
 end, {})
 vim.api.nvim_create_user_command("SO", function()
-    local current_file = vim.fn.expand('%:p')
-    vim.fn.system('source ' .. current_file)
-    print("Current file sourced.")
+	local current_file = vim.fn.expand("%:p")
+	vim.fn.system("source " .. current_file)
+	print("Current file sourced.")
 end, {})
 
 vim.keymap.set("n", "<leader>cd", "<cmd>cd %:p:h<CR>")
-

@@ -29,10 +29,13 @@ require("mason-lspconfig").setup({
 		"eslint",
 		"lua_ls",
 		"emmet_language_server",
+		"emmet_ls",
 		"rust_analyzer",
 		"tailwindcss",
 		"pyright",
 		"pylsp",
+		"ts_ls",
+		"vtsls",
 	},
 	handlers = {
 		lsp.default_setup,
@@ -73,6 +76,9 @@ lsp.on_attach(function(client, bufnr)
 		vim.lsp.buf.signature_help()
 	end, opts)
 
+	client.server_capabilities.documentFormattingProvider = true
+	client.server_capabilities.documentRangeFormattingProvider = true
+
 	if client.server_capabilities.inlayHintProvider then
 		vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
 	end
@@ -96,6 +102,7 @@ cmp.setup({
 		{ name = "luasnip", keyword_length = 2 },
 		{ name = "buffer", keyword_length = 3 },
 	},
+	formatting = lsp.cmp_format(),
 	window = {
 		completion = { border = "rounded" },
 		documentation = { border = "rounded" },
@@ -153,6 +160,7 @@ lspconfig.lua_ls.setup({
 	},
 })
 
+--[[
 require("typescript-tools").setup({
 	settings = {
 		tsserver_path = vim.fn.stdpath("data") .. "/mason/bin/typescript-language-server",
@@ -170,6 +178,7 @@ require("typescript-tools").setup({
 		},
 	},
 })
+]]
 
 lspconfig.pyright.setup({
 	settings = {

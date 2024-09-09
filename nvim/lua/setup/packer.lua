@@ -126,4 +126,11 @@ return require("packer").startup(function(use)
 		run = "./install.sh",
 	})
 	use("pmizio/typescript-tools.nvim")
+	use("laytan/cloak.nvim")
+	use({
+		"MeanderingProgrammer/render-markdown.nvim",
+		after = { "nvim-treesitter" },
+		requires = { "echasnovski/mini.nvim", opt = true }, -- if you use the mini.nvim suite
+	})
+	use("epwalsh/obsidian.nvim")
 end)
