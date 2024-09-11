@@ -30,6 +30,7 @@ vim.keymap.set("n", "<Leader>dt", ":DapToggleBreakpoint<CR>")
 vim.keymap.set("n", "<Leader>dc", ":DapContinue<CR>")
 vim.keymap.set("n", "<Leader>dx", ":DapTerminate<CR>")
 vim.keymap.set("n", "<Leader>do", ":DapStepOver<CR>")
+vim.keymap.set("n", "<Leader>dgc", dap.run_to_cursor)
 
 require("dap-vscode-js").setup({
 	node_path = "node", -- Path of node executable. Defaults to $NODE_PATH, and then "node"

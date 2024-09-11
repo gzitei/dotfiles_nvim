@@ -60,7 +60,7 @@ require("conform").setup({
 				"--aggressive",
 				"--aggressive",
 				"--aggressive",
-				"--in-place",
+				--"--in-place",
 				"--max-line-length",
 				"79",
 				"-",

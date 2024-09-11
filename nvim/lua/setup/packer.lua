@@ -135,4 +135,13 @@ return require("packer").startup(function(use)
 	use("epwalsh/obsidian.nvim")
 	use({ "echasnovski/mini.icons" })
 	use({ "norcalli/nvim-colorizer.lua" })
+
+	use({
+		"folke/todo-comments.nvim",
+		requires = { "nvim-lua/plenary.nvim" },
+		event = "BufRead",
+		config = function()
+			require("todo-comments").setup()
+		end,
+	})
 end)

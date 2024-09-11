@@ -50,6 +50,7 @@ lsp.on_attach(function(client, bufnr)
 	end, opts)
 	vim.keymap.set("n", "K", function()
 		vim.lsp.buf.hover()
+		vim.api.nvim_command("wincmd p")
 	end, opts)
 	vim.keymap.set("n", "<leader>vws", function()
 		vim.lsp.buf.workspace_symbol()
@@ -94,6 +95,21 @@ luasnip.filetype_extend("typescript", { "html" })
 luasnip.filetype_extend("javascriptreact", { "html" })
 luasnip.filetype_extend("typescriptreact", { "html" })
 
+local function underscore_last(entry1, entry2)
+	local _, entry1_under = entry1.completion_item.label:find("^_+")
+	local _, entry2_under = entry2.completion_item.label:find("^_+")
+
+	if entry1_under and entry2_under then
+		return entry1.completion_item.label < entry2.completion_item.label
+	elseif entry1_under then
+		return false
+	elseif entry2_under then
+		return true
+	else
+		return nil -- Let cmp decide
+	end
+end
+
 cmp.setup({
 	sources = {
 		{ name = "path" },
@@ -113,6 +129,18 @@ cmp.setup({
 		["<Tab>"] = cmp.mapping.confirm({ select = true }),
 		["<C-y>"] = cmp.mapping.complete(),
 	}),
+	sorting = {
+		comparators = {
+			underscore_last,
+			cmp.config.compare.offset,
+			cmp.config.compare.exact,
+			cmp.config.compare.score,
+			cmp.config.compare.kind,
+			cmp.config.compare.sort_text,
+			cmp.config.compare.length,
+			cmp.config.compare.order,
+		},
+	},
 })
 
 -- Specific language server setups
