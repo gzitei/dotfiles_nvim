@@ -1,4 +1,6 @@
 vim.opt.nu = true
+vim.o.exrc = true
+vim.o.secure = true
 vim.opt.relativenumber = true
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4

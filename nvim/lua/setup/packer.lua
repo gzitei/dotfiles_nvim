@@ -118,7 +118,7 @@ return require("packer").startup(function(use)
 		run = "npm --prefix "
 			.. vim.fn.stdpath("data")
 			.. "/site/pack/packer/opt/vscode-js-debug/"
-			.. " install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out && git stash",
+			.. " install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out && rm -rf .git",
 	})
 	use("mfussenegger/nvim-dap-python")
 	use({
@@ -133,4 +133,6 @@ return require("packer").startup(function(use)
 		requires = { "echasnovski/mini.nvim", opt = true }, -- if you use the mini.nvim suite
 	})
 	use("epwalsh/obsidian.nvim")
+	use({ "echasnovski/mini.icons" })
+	use({ "norcalli/nvim-colorizer.lua" })
 end)
