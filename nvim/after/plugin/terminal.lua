@@ -4,16 +4,21 @@ local term_win = nil
 
 local function toggle_floating_terminal()
 	if term_win and vim.api.nvim_win_is_valid(term_win) then
-		-- Terminal window exists, so hide it
-		vim.api.nvim_win_hide(term_win)
-		term_win = nil
+		if vim.fn.win_getid() ~= term_win then
+			-- Terminal window exists and is not focused, so focus it
+			vim.api.nvim_set_current_win(term_win)
+			vim.cmd("startinsert")
+		else
+			-- Terminal window is focused, so hide it
+			vim.api.nvim_win_hide(term_win)
+			term_win = nil
+		end
 	else
 		-- Create or show terminal window
-		local width = vim.api.nvim_get_option("columns")
-		local height = vim.api.nvim_get_option("lines")
-
+		local width = vim.o.columns
+		local height = vim.o.lines
 		-- Calculate floating window size
-		local win_height = math.ceil(height * 0.3 - 4)
+		local win_height = math.ceil(height * 0.35 - 4)
 		local win_width = math.ceil(width * 0.8)
 
 		-- Calculate starting position
@@ -56,3 +61,4 @@ end
 vim.api.nvim_create_user_command("TermFloat", toggle_floating_terminal, {})
 vim.api.nvim_set_keymap("n", "<C-g>", ":TermFloat<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("t", "<C-g>", "<C-\\><C-n>:TermFloat<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("t", "<C-w>", "<C-\\><C-n><C-w>", { noremap = true, silent = true })
