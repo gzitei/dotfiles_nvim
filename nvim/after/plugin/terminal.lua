@@ -59,6 +59,6 @@ end
 
 -- Create a user command to call this function
 vim.api.nvim_create_user_command("TermFloat", toggle_floating_terminal, {})
-vim.api.nvim_set_keymap("n", "<C-g>", ":TermFloat<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("t", "<C-g>", "<C-\\><C-n>:TermFloat<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<C-t>", ":TermFloat<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("t", "<C-t>", "<C-\\><C-n>:TermFloat<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("t", "<C-w>", "<C-\\><C-n><C-w>", { noremap = true, silent = true })
