@@ -8,9 +8,8 @@ return require("packer").startup(function(use)
 	-- Packer can manage itself
 	use("wbthomason/packer.nvim")
 	use("meain/vim-jsontogo")
-	use({ "davidgranstrom/nvim-markdown-preview" })
 	use("eldritch-theme/eldritch.nvim")
-	--use({ "projekt0n/github-nvim-theme" })
+	use({ "projekt0n/github-nvim-theme" })
 	use({
 		"ellisonleao/glow.nvim",
 		config = function()
@@ -118,7 +117,7 @@ return require("packer").startup(function(use)
 		run = "npm --prefix "
 			.. vim.fn.stdpath("data")
 			.. "/site/pack/packer/opt/vscode-js-debug/"
-			.. " install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out && rm -rf .git",
+			.. " install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out && git stash",
 	})
 	use("mfussenegger/nvim-dap-python")
 	use({
@@ -127,11 +126,6 @@ return require("packer").startup(function(use)
 	})
 	use("pmizio/typescript-tools.nvim")
 	use("laytan/cloak.nvim")
-	use({
-		"MeanderingProgrammer/render-markdown.nvim",
-		after = { "nvim-treesitter" },
-		requires = { "echasnovski/mini.nvim", opt = true }, -- if you use the mini.nvim suite
-	})
 	use("epwalsh/obsidian.nvim")
 	use({ "echasnovski/mini.icons" })
 	use({ "norcalli/nvim-colorizer.lua" })

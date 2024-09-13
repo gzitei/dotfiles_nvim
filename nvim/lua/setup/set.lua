@@ -31,9 +31,6 @@ vim.cmd([[highlight lCursor guifg=#FFFFFF guibg=#FF0000]])
 vim.opt.cursorline = true
 vim.cmd([[highlight CursorLine ctermbg=235 guibg=#131313]])
 vim.cmd([[highlight ColorColumn ctermbg=235 guibg=#131313]])
-vim.api.nvim_command("iabbrev ;; /")
-vim.api.nvim_command("iabbrev zz \\")
-vim.api.nvim_command("iabbrev ZZ \\|")
 
 vim.api.nvim_create_autocmd({ "FileType" }, {
 	pattern = {

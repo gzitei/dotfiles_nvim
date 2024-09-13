@@ -36,9 +36,6 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 vim.keymap.set("n", "<leader><leader>", "<cmd>:source %<CR>", { silent = true })
 
-vim.keymap.set("n", "<leader>tmv", "<cmd>ToggleTerm direction='vertical'<CR>")
-vim.keymap.set("n", "<leader>tmh", "<cmd>ToggleTerm direction='horizontal'<CR>")
-vim.keymap.set("n", "<leader>tmf", "<cmd>ToggleTerm direction='float'<CR>")
 vim.api.nvim_create_user_command("Cwd", function()
 	local current = vim.fn.expand("%:p:h")
 	vim.fn.system("echo " .. current .. " | xclip -selection clipboard")
