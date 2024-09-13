@@ -1,24 +1,25 @@
 local function current_directory()
-    local path = vim.fn.expand('%:p:h')
-    return path
+	local path = vim.fn.expand("%:p:h")
+	return path
 end
 
-require('lualine').setup {
-    options = {
-        theme = 'auto',
-    },
-    sections = {
-        lualine_a = { 'mode', },
-        lualine_b = { 'branch', 'diff', 'diagnostics' },
-        lualine_c = {
-            current_directory,
-            'filename',
-        },
-        lualine_x = { 'encoding', 'filesize', 'fileformat', 'filetype' },
-        lualine_y = { 'progress' },
-        lualine_z = { 'location' }
-    },
-}
+require("lualine").setup({
+	options = {
+		theme = "auto",
+		position = "bottom",
+	},
+	sections = {
+		lualine_a = { "mode" },
+		lualine_b = { "branch", "diff", "diagnostics" },
+		lualine_c = {
+			current_directory,
+			"filename",
+		},
+		lualine_x = { "encoding", "filesize", "fileformat", "filetype" },
+		lualine_y = { "progress" },
+		lualine_z = { "location" },
+	},
+})
 
 --[[
 require('lualine').setup {
@@ -56,4 +57,3 @@ require('lualine').setup {
 }
 
 ]]
-

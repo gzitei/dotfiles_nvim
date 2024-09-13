@@ -10,7 +10,7 @@ return require("packer").startup(function(use)
 	use("meain/vim-jsontogo")
 	use({ "davidgranstrom/nvim-markdown-preview" })
 	use("eldritch-theme/eldritch.nvim")
-	use({ "projekt0n/github-nvim-theme" })
+	--use({ "projekt0n/github-nvim-theme" })
 	use({
 		"ellisonleao/glow.nvim",
 		config = function()
