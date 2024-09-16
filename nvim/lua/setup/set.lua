@@ -26,11 +26,11 @@ vim.api.nvim_set_option_value("guicursor", "n-v-c-sm:block,i-ci-ve:block,r-cr-o:
 vim.g.netrw_browse_x = "subl"
 vim.g.netrw_browsex_viewer = "subl"
 vim.cmd("source ~/.config/nvim/lua/setup/packer.lua")
-vim.cmd([[highlight Cursor guifg=#FFFFFF guibg=#FF0000]])
-vim.cmd([[highlight lCursor guifg=#FFFFFF guibg=#FF0000]])
-vim.opt.cursorline = true
-vim.cmd([[highlight CursorLine ctermbg=235 guibg=#131313]])
-vim.cmd([[highlight ColorColumn ctermbg=235 guibg=#131313]])
+--vim.cmd([[highlight Cursor guifg=#FFFFFF guibg=#FF0000]])
+--vim.cmd([[highlight lCursor guifg=#FFFFFF guibg=#FF0000]])
+--vim.opt.cursorline = true
+--vim.cmd([[highlight CursorLine ctermbg=235 guibg=#131313]])
+--vim.cmd([[highlight ColorColumn ctermbg=235 guibg=#131313]])
 
 vim.api.nvim_create_autocmd({ "FileType" }, {
 	pattern = {

@@ -90,6 +90,9 @@ return require("packer").startup(function(use)
 	})
 	use({ "ellisonleao/gruvbox.nvim" })
 	use({ "echasnovski/mini.indentscope" })
+	--[[use({
+		"lukas-reineke/indent-blankline.nvim",
+	})]]
 	use({
 		"loctvl842/monokai-pro.nvim",
 	})
@@ -138,4 +141,5 @@ return require("packer").startup(function(use)
 			require("todo-comments").setup()
 		end,
 	})
+	use({ "lukas-reineke/virt-column.nvim" })
 end)

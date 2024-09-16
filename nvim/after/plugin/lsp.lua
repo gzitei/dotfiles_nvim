@@ -33,7 +33,6 @@ require("mason-lspconfig").setup({
 		"rust_analyzer",
 		"tailwindcss",
 		"pyright",
-		"pylsp",
 		"ts_ls",
 		"vtsls",
 	},
@@ -50,7 +49,6 @@ lsp.on_attach(function(client, bufnr)
 	end, opts)
 	vim.keymap.set("n", "K", function()
 		vim.lsp.buf.hover()
-		vim.api.nvim_command("wincmd p")
 	end, opts)
 	vim.keymap.set("n", "<leader>vws", function()
 		vim.lsp.buf.workspace_symbol()
