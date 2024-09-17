@@ -3,10 +3,11 @@ mini.setup({
 	symbol = "▎",
 	symbolOff = "",
 	options = {
-		try_as_border = false,
+		try_as_border = true,
 	},
 	draw = {
 		animation = mini.gen_animation.none(),
+		priority = 100,
 	},
 })
 local init = function()
@@ -31,4 +32,4 @@ local init = function()
 end
 init()
 
-vim.cmd([[highlight MiniIndentscopeSymbol guifg=#c3c3c3 gui=nocombine]])
+vim.cmd([[highlight MiniIndentscopeSymbol guifg=#6e6a86 gui=nocombine]])

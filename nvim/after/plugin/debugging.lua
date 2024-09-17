@@ -125,7 +125,7 @@ dap.configurations.python = {
 		name = "Launch file",
 		program = "${file}",
 		pythonPath = function()
-			return "/usr/bin/python3"
+			return "python3"
 		end,
 		postDebugTask = "Keep UI Open",
 	},
@@ -133,7 +133,7 @@ dap.configurations.python = {
 
 dap.adapters.python = {
 	type = "executable",
-	command = "python",
+	command = "python3",
 	args = { "-m", "debugpy.adapter" },
 }
 
